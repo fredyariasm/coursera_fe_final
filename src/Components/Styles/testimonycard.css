@@ -1,0 +1,37 @@
+.tcard {
+  background: #fdeef0;
+  border-radius: 16px;
+  padding: 18px 18px 20px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.06);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tcard-row { display: flex; align-items: center; }
+
+.tcard-top { justify-content: flex-start; }
+
+.tcard-rating { display: inline-flex; gap: 4px; }
+.tcard-star {
+  width: 18px; height: 18px; fill: #e5e7eb;
+}
+.tcard-star.is-filled { fill: #f59e0b; }   
+
+.tcard-user { gap: 12px; }
+.tcard-avatar {
+  width: 56px; height: 56px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #e5e7eb;
+}
+.tcard-name {
+  font-weight: 700;
+  color: #111827;
+}
+
+.tcard-text {
+  margin: 0;
+  color: #374151;
+  line-height: 1.55;
+}
