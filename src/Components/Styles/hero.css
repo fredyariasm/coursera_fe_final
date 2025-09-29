@@ -1,0 +1,91 @@
+
+:root{
+
+  --img-w: 640px;
+  --img-h: 420px;
+  --img-out: 110px;          
+
+  /* layout */
+  --strip-radius: 18px;
+  --strip-pad-y: 56px;
+  --strip-pad-x: 56px;
+  --gap-top: 48px;            /* space from navbar */
+  --container: 1200px;        /* max width */
+}
+
+/* wrapper that everything positions against */
+.hero{
+  position: relative;
+  max-width: var(--container);
+  margin: var(--gap-top) auto 72px;
+  padding: 0 24px;           /* page side padding */
+}
+
+/* the green strip */
+.hero-strip{
+  background: #495e57;
+  border-radius: var(--strip-radius);
+  padding: var(--strip-pad-y) calc(var(--strip-pad-x) + 48px) var(--strip-pad-y) var(--strip-pad-x);
+  /* reserve room so text never sits under the image */
+  padding-right: calc(var(--strip-pad-x) + 0.56 * var(--img-w));
+}
+
+/* left text stack */
+.hero-text{ color:#EDEFEE; max-width: 540px; }
+.hero-title{
+  margin: 0 0 8px 0;
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 800;
+  color: #f4ce14;           /* yellow */
+}
+.hero-city{
+  margin: 0 0 18px 0;
+  font-size: 26px;
+  font-weight: 700;
+}
+.hero-copy{
+  margin: 0 0 22px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 460px;
+}
+
+/* button */
+.hero-cta{
+  display:inline-block;
+  background:#f4ce14;
+  color:#111;
+  font-weight:700;
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:14px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.05) inset;
+  transition: filter .15s ease;
+}
+.hero-cta:hover{ filter:brightness(.95); }
+
+/* photo that overlaps the strip */
+.hero-photo{
+  position:absolute;
+  width: var(--img-w);
+  height: var(--img-h);
+  object-fit: cover;
+  right: calc(-1 * var(--img-out));  /* stick out of the strip */
+  top: 50%;
+  transform: translateY(-44%);       /* slight upward bias like the mock */
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.22);
+  z-index: 2;
+}
+
+/* ensure the strip stays behind the photo */
+.hero-strip{ position: relative; z-index: 1; }
+
+/* responsive guardrails so it doesn't fly off-screen on smaller widths */
+@media (max-width: 1300px){
+  :root{ --img-w: 580px; --img-h: 390px; --img-out: 90px; }
+}
+@media (max-width: 1150px){
+  :root{ --img-w: 520px; --img-h: 350px; --img-out: 70px; }
+}

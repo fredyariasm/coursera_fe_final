@@ -1,0 +1,69 @@
+:root {
+  --ll-text: #0f172a;
+  --ll-text-dim: rgba(15, 23, 42, 0.9);
+  --ll-border: #e5e7eb;
+  --ll-bg: rgba(255, 255, 255, 0.95);
+}
+
+.ll-header {
+  position: relative;
+  width: 100%;
+  background: var(--ll-bg);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--ll-border);
+}
+
+.ll-nav {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ll-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.ll-logo {
+  width: 150px; 
+  height: 150px;
+}
+.ll-wordmark {
+  letter-spacing: 0.25em;
+  color: #334155;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.ll-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 32px;
+  align-items: center;
+}
+
+.ll-link {
+  text-decoration: none;
+  color: var(--ll-text-dim);
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+
+.ll-link:hover {
+  color: var(--ll-text);
+}
+
+.ll-strong {
+  font-weight: 700;
+}
+
+
