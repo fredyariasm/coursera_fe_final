@@ -2,21 +2,8 @@ import BookingForm from "./Components/BookingForm";
 import Nav from './Components/Nav'
 import "./Components/Styles/bookingpage.css";
 import { useReducer } from "react";
+import { initializeTimes, updateTimes } from "./bookingTimes";
 
-const SEED_TIMES = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-
-function updateTimes(state, action) {
-  switch (action.type) {
-    case "dateChanged":
-      return SEED_TIMES;
-    default:
-      return state;
-  }
-}
-
-function initializeTimes() {
-  return SEED_TIMES;
-}
 
 function BookingPage() {
 
