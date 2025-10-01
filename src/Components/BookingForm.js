@@ -1,15 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
 import "./Styles/bookingform.css";
 
-const availableTimes  = ["17:00","18:00","19:00","20:00","21:00","22:00"];
 
-export default function BookingForm({ onSubmit }) {
+export default function BookingForm({ onSubmit, availableTimes,dispatchAvailableTimes }) {
   const todayISO = useMemo(() => new Date().toISOString().split("T")[0], []);
   const [date, setDate] = useState(todayISO);
   const [time, setTime] = useState(availableTimes[0]);
   const [guests, setGuests] = useState(2);
   const [occasion, setOccasion] = useState("Birthday");
   const [errors, setErrors] = useState({});
+
+   useEffect(() => {
+    if (!availableTimes.includes(time)) {
+      setTime(availableTimes[0] || "");
+    }
+  }, [availableTimes, time]);
 
   function validate() {
     const e = {};
@@ -30,6 +35,12 @@ export default function BookingForm({ onSubmit }) {
     alert(`Reservation requested:\n\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\nOccasion: ${occasion}`);
   }
 
+   function handleDateChange(e) {
+    const newDate = e.target.value;
+    setDate(newDate);
+    dispatchAvailableTimes?.({ type: "dateChanged", date: newDate });
+  }
+
   return (
     <form className="bk-form" onSubmit={handleSubmit} noValidate>
       <div className="bk-field">
@@ -40,7 +51,7 @@ export default function BookingForm({ onSubmit }) {
           name="date"
           value={date}
           min={todayISO}
-          onChange={(e) => setDate(e.target.value)}
+           onChange={handleDateChange}
           required
           aria-invalid={!!errors.date}
           aria-describedby={errors.date ? "err-date" : undefined}
@@ -60,7 +71,7 @@ export default function BookingForm({ onSubmit }) {
           aria-describedby={errors.time ? "err-time" : undefined}
           className="bk-select"
         >
-          {DEFAULT_TIMES.map(t => <option key={t} value={t}>{t}</option>)}
+          {availableTimes.map(t => <option key={t} value={t}>{t}</option>)}
         </select>
         {errors.time && <span id="err-time" className="bk-error">{errors.time}</span>}
       </div>

@@ -1,8 +1,27 @@
 import BookingForm from "./Components/BookingForm";
-import Nav from  './Components/Nav'
+import Nav from './Components/Nav'
 import "./Components/Styles/bookingpage.css";
+import { useReducer } from "react";
 
-export default function BookingPage() {
+const SEED_TIMES = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+
+function updateTimes(state, action) {
+  switch (action.type) {
+    case "dateChanged":
+      return SEED_TIMES;
+    default:
+      return state;
+  }
+}
+
+function initializeTimes() {
+  return SEED_TIMES;
+}
+
+function BookingPage() {
+
+  const [availableTimes, dispatch] = useReducer(updateTimes, undefined, initializeTimes);
+
   return (
     <>
       <Nav />
@@ -15,9 +34,12 @@ export default function BookingPage() {
         </section>
 
         <section className="booking-form-wrap">
-          <BookingForm />
+          <BookingForm availableTimes={availableTimes}
+            dispatchAvailableTimes={dispatch} />
         </section>
       </main>
     </>
   );
 }
+
+export default BookingPage;
