@@ -1,9 +1,10 @@
 import "./Styles/hero.css"
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
     <section className="hero">
-      
+
       <div className="hero-strip">
         <div className="hero-text">
           <h1 className="hero-title">Little Lemon</h1>
@@ -12,10 +13,12 @@ export default function Hero() {
             We are a family owned Mediterranean restaurant, focused on
             traditional recipes served with a modern twist.
           </p>
-          <a href="#reservations" className="hero-cta">Reserve a Table</a>
+          <Link to="/booking" className="hero-cta">
+            Reserve a Table
+          </Link>
         </div>
       </div>
-      
+
       <img
         className="hero-photo"
         src="/restaurantfood.jpg"

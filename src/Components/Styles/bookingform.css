@@ -1,0 +1,90 @@
+.bk-form{
+  --green: #495e57;
+  --lemon: #F4CE14;
+  --ink: #111;
+  --body: #374151;
+  --border: #d7dadd;
+  --bg: #ffffff;
+
+  background: var(--bg);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.06);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+}
+
+.bk-field{
+  display: grid;
+  gap: 8px;
+}
+
+.bk-label{
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 14px;
+  letter-spacing: .01em;
+}
+
+.bk-input,
+.bk-select{
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+.bk-input::placeholder{ color:#9aa3ad; }
+
+.bk-input:focus, .bk-select:focus{
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--green) 18%, transparent);
+}
+
+.bk-error{
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+.bk-actions{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 4px;
+}
+
+.bk-submit{
+  appearance: none;
+  border: none;
+  background: var(--lemon);
+  color: var(--ink);
+  font-weight: 800;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(0,0,0,.05) inset, 0 6px 18px rgba(0,0,0,.08);
+  transition: transform .04s ease, filter .15s ease;
+}
+.bk-submit:hover{ filter: brightness(.96); }
+.bk-submit:active{ transform: translateY(1px); }
+
+.bk-select{
+  background-image:
+    linear-gradient(45deg, transparent 50%, #9aa3ad 50%),
+    linear-gradient(135deg, #9aa3ad 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position:
+    calc(100% - 18px) 18px,
+    calc(100% - 12px) 18px,
+    calc(100% - 2.2rem) 0.5rem;
+  background-size: 6px 6px, 6px 6px, 1px 1.6rem;
+  background-repeat: no-repeat;
+}

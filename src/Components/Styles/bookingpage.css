@@ -1,0 +1,32 @@
+.booking-shell {
+  background: #EDEFEE;
+  padding: 60px 24px;
+}
+
+.booking-hero {
+  max-width: 720px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.booking-title {
+  font-size: 40px;
+  font-weight: 800;
+  color: #495e57;
+  margin: 0 0 8px;
+}
+
+.booking-sub {
+  font-size: 18px;
+  color: #4b5563;
+  margin: 0;
+}
+
+.booking-form-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+}
