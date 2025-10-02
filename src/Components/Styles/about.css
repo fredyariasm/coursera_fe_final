@@ -1,5 +1,14 @@
+:root{
+  --about-max: 1200px;
+  --photo-w: 260px;
+  --photo-h: 320px;
+  --photo-shift-x: 40px;  /* overlap amount horizontally */
+  --photo-shift-y: 20px;  /* overlap amount vertically */
+}
+
+/* ===== Base (desktop) ===== */
 .about {
-  max-width: 1200px;
+  max-width: var(--about-max);
   margin: 64px auto;
   padding: 0 24px;
   display: flex;
@@ -8,9 +17,7 @@
   gap: 48px;
 }
 
-.about-text {
-  flex: 1;
-}
+.about-text { flex: 1; }
 
 .about-title {
   margin: 0;
@@ -34,42 +41,106 @@
   max-width: 560px;
 }
 
+/* Photos area */
 .about-photos {
   flex: 1;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* ensures enough vertical room for absolute images */
+  min-height: calc(var(--photo-h) + 20px);
 }
 
 .about-photo {
-  width: 260px;
-  height: 320px;
+  width: var(--photo-w);
+  height: var(--photo-h);
   object-fit: cover;
+  object-position: center;
   border-radius: 16px;
   box-shadow: 0 10px 24px rgba(0,0,0,.15);
   position: absolute;
+  will-change: transform;
 }
 
 .photo-front {
   z-index: 2;
-  transform: translate(40px, -20px);
+  transform: translate(var(--photo-shift-x), calc(-1 * var(--photo-shift-y)));
 }
 
 .photo-back {
   z-index: 1;
-  transform: translate(-40px, 40px);
+  transform: translate(calc(-1 * var(--photo-shift-x)), var(--photo-shift-y));
 }
 
-@media (max-width: 900px) {
+/* ===== Large tablet (shrink images, keep overlap) ===== */
+@media (max-width: 1100px){
+  :root{
+    --photo-w: 230px;
+    --photo-h: 290px;
+    --photo-shift-x: 34px;
+    --photo-shift-y: 16px;
+  }
+  .about-title { font-size: 38px; }
+  .about-subtitle { font-size: 22px; }
+}
+
+/* ===== Tablet (tighter text, smaller photos) ===== */
+@media (max-width: 900px){
   .about {
     flex-direction: column;
     text-align: center;
+    gap: 28px;
   }
   .about-text { order: 1; }
   .about-photos {
     order: 2;
-    margin-top: 24px;
-    height: 380px;
+    margin-top: 8px;
+    min-height: calc(var(--photo-h) + 12px);
   }
+  .about-desc { max-width: 48ch; margin-left: auto; margin-right: auto; }
+}
+
+/* ===== Small tablet / large phone (reduced overlap) ===== */
+@media (max-width: 720px){
+  :root{
+    --photo-w: 210px;
+    --photo-h: 270px;
+    --photo-shift-x: 24px;
+    --photo-shift-y: 12px;
+  }
+  .about-title { font-size: 34px; }
+  .about-subtitle { font-size: 20px; }
+}
+
+/* ===== Phones: stack photos cleanly ===== */
+@media (max-width: 520px){
+  /* Switch from absolute overlap to inline stacked cards */
+  .about-photos{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    min-height: unset;
+  }
+  .about-photo{
+    position: static;          /* no absolute */
+    width: 100%;
+    height: 240px;
+    transform: none;           /* remove translate */
+    border-radius: 14px;
+  }
+  .photo-front{ order: 1; }
+  .photo-back{ order: 2; }
+
+  .about { margin: 48px auto; }
+  .about-title { font-size: 30px; }
+  .about-subtitle { font-size: 18px; margin-bottom: 14px; }
+  .about-desc { font-size: 15px; }
+}
+
+/* ===== Small phones ===== */
+@media (max-width: 380px){
+  .about-photo{ height: 210px; border-radius: 12px; }
 }
