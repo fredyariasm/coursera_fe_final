@@ -3,11 +3,24 @@ import Nav from './Components/Nav'
 import "./Components/Styles/bookingpage.css";
 import { useReducer } from "react";
 import { initializeTimes, updateTimes } from "./bookingTimes";
-
+import { submitAPI } from "./api";
+import { useNavigate } from "react-router-dom";
 
 function BookingPage() {
 
   const [availableTimes, dispatch] = useReducer(updateTimes, undefined, initializeTimes);
+  const navigate = useNavigate();
+
+  function submitForm(formData) {
+
+    const success = submitAPI(formData)
+
+    if (success) {
+      navigate("/confirmed", { state: { reservation: formData } });
+    } else {
+      alert("Sorry, your booking could not be completed. Please try again.");
+    }
+  }
 
   return (
     <>
@@ -22,7 +35,8 @@ function BookingPage() {
 
         <section className="booking-form-wrap">
           <BookingForm availableTimes={availableTimes}
-            dispatchAvailableTimes={dispatch} />
+            dispatchAvailableTimes={dispatch} 
+            onSubmit={submitForm}/>
         </section>
       </main>
     </>

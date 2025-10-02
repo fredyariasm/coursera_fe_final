@@ -30,9 +30,8 @@ export default function BookingForm({ onSubmit, availableTimes,dispatchAvailable
     ev.preventDefault();
     if (!validate()) return;
 
-    const payload = { date, time, guests: Number(guests), occasion };
+    const payload = { date, time, guests: Number(guests), occasion, ref: crypto.randomUUID?.() };
     if (onSubmit) onSubmit(payload);
-    alert(`Reservation requested:\n\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\nOccasion: ${occasion}`);
   }
 
    function handleDateChange(e) {

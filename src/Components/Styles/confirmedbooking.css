@@ -1,0 +1,102 @@
+.confirm-shell {
+  background: #EDEFEE;                /* section band like booking page */
+  padding: 56px 24px 72px;
+}
+
+.confirm-hero {
+  max-width: 720px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.confirm-icon {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 10px;
+}
+
+.confirm-title {
+  margin: 0 0 6px;
+  font-size: 40px;
+  font-weight: 800;
+  color: #495e57;                     /* dark green */
+}
+
+.confirm-sub {
+  margin: 0;
+  color: #4b5563;
+  font-size: 18px;
+}
+
+.confirm-card {
+  max-width: 720px;
+  margin: 18px auto 0;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+  padding: 24px;
+}
+
+.confirm-heading {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111;
+}
+
+.confirm-list {
+  margin: 0;
+  padding: 0;
+}
+
+.confirm-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.confirm-row:first-child { border-top: none; }
+
+.confirm-row dt {
+  margin: 0;
+  color: #6b7280;
+  font-weight: 700;
+}
+
+.confirm-row dd {
+  margin: 0;
+  color: #111827;
+}
+
+.confirm-ref {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: .02em;
+}
+
+.confirm-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.confirm-btn {
+  display: inline-block;
+  background: #F4CE14;                /* lemon */
+  color: #111;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  transition: filter .15s ease, transform .04s ease;
+}
+.confirm-btn:hover { filter: brightness(.96); }
+.confirm-btn:active { transform: translateY(1px); }
+
+.confirm-btn.outline {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  color: #111;
+}
